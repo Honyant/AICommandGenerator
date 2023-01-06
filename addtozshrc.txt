@@ -1,0 +1,9 @@
+_prefill() {
+  local output
+  output=$(python3 INSERT_CURRENT_DIR/txt2cmd.py $BUFFER)
+  BUFFER="\$(: \"${BUFFER}\")
+  ${output}"
+}
+
+zle -N _prefill
+bindkey '^r' _prefill
